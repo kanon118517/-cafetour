@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  
    root to: "homes#top"
   get "/about" => "homes#about" , as: "about"
 
@@ -19,6 +18,7 @@ Rails.application.routes.draw do
    
   namespace :admin do
     get 'homes/top' => "homes#top", as: "top"
+    resources :prefecttures, only: [:new, :create, :index]
   end
 
   resources :cafes, only: [:new, :create, :index, :show, :edit, :update]

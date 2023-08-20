@@ -1,0 +1,2 @@
+class Prefectture < ApplicationRecord
+end

@@ -1,2 +1,13 @@
-<h1>Public::CafePosts#edit</h1>
-<p>Find me in app/views/public/cafe_posts/edit.html.erb</p>
+<h3>編集画面</h3>
+
+<%= form_with model: @cafe_post do |f| %>
+
+<%= @cafe_post.cafe.cafe_name %>
+
+<%= f.text_area :cafe_comment %>
+
+<%= f.file_field :image, accept: "image/*" %>
+
+<%= f.submit '保存' %>
+
+<% end %>

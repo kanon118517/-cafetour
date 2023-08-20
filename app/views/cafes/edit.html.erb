@@ -1,0 +1,13 @@
+<h4>編集</h4>
+
+<%= form_with model: @cafe do |f| %>
+
+<h4>カフェ名</h4>
+  <%= f.text_field :cafe_name %>
+
+  <h4>カフェ住所</h4>
+  <%= f.text_field :address %>
+
+  <%= f.submit '保存' %>
+
+<% end %>

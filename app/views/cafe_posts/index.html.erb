@@ -3,7 +3,15 @@
 <% @cafe_posts.each do |cafe_post| %>
 
 <div>
-  <%= cafe_post.cafe_comment %>
+  <%= link_to cafe_post.cafe_comment, cafe_post_path(cafe_post.id) %>
+</div>
+
+<div>
+  <% if cafe_post.image.attached? %>
+    <%= image_tag cafe_post.image, size: "200x200" %>
+  <% else %>
+
+  <% end %>
 </div>
 
 <% end %>

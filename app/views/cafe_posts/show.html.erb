@@ -1,2 +1,21 @@
-<h1>Public::CafePosts#show</h1>
-<p>Find me in app/views/public/cafe_posts/show.html.erb</p>
+
+<div>
+  <%= @cafe_post.cafe.cafe_name %>
+</div>
+
+<div>
+  <%= @cafe_post.cafe_comment %>
+</div>
+
+<div>
+  <% if @cafe_post.image.attached? %>
+    <%= image_tag @cafe_post.image, size: "200x200" %>
+  <% else %>
+
+  <% end %>
+</div>
+<% if @cafe_post.user == current_user %>
+  <%= link_to "編集", edit_cafe_post_path(@cafe_post.id) %>
+  <%= link_to "削除", cafe_post_path(@cafe_post.id), method: :delete, "data-confirm" => "削除しますか？" %>
+
+<% end %>

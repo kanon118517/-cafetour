@@ -1,0 +1,13 @@
+<h3>カフェ一覧</h3>
+
+<% @cafes.each do |cafe| %>
+
+<div>
+  <%= link_to cafe.cafe_name, cafe_path(cafe.id) %>
+</div>
+
+<div>
+  <%= cafe.address %>
+</div>
+
+<% end %>

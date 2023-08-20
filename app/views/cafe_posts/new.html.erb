@@ -2,9 +2,17 @@
 
 <%= form_with model: @cafe_post do |f| %>
 
+  <%= f.hidden_field :cafe_id, :value => @cafe.id %>
+   <%= @cafe.cafe_name %>
+
+
   <h4>カフェコメント</h4>
   <%= f.text_area :cafe_comment %>
+
+  <h4>画像</h4>
+  <%= f.file_field :image, accept: "image/*" %>
 
 <%= f.submit '投稿' %>
 
 <% end %>
+

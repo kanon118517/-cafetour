@@ -19,16 +19,6 @@ class CafePostsController < ApplicationController
     @cafe_post = CafePost.find(params[:id])
   end
 
-  def edit
-    @cafe_post = CafePost.find(params[:id])
-  end
-
-  def update
-    cafe_post = CafePost.find(params[:id])
-    cafe_post.update(cafe_post_params)
-    redirect_to cafe_posts_path
-  end
-
   def destroy
     cafe_post = CafePost.find(params[:id])
     cafe_post.destroy
@@ -36,9 +26,4 @@ class CafePostsController < ApplicationController
   end
 
 
-  private
-
-  def cafe_post_params
-    params.require(:cafe_post).permit(:cafe_id,:cafe_comment,:image)
-  end
 end

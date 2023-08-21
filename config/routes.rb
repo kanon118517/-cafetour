@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
    root to: "homes#top"
   get "/about" => "homes#about" , as: "about"
 
@@ -15,10 +16,11 @@ Rails.application.routes.draw do
  devise_scope :user do
      post 'public/guest_sign_in', to: 'public/sessions#guest_sign_in'
    end
-   
+
   namespace :admin do
     get 'homes/top' => "homes#top", as: "top"
     resources :prefecttures, only: [:new, :create, :index]
+    resources :cafes, only: [:index, :show, :destroy]
   end
 
   resources :cafes, only: [:new, :create, :index, :show, :edit, :update]

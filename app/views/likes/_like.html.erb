@@ -1,0 +1,14 @@
+<% if !user_signed_in? %>
+  <i class="fa fa-heart like-btn"></i>
+  <%= cafe_post.likes.length %>
+<% elsif current_user.liked_by?(cafe_post.id) %>
+  <%= link_to cafe_post_like_path(cafe_post, cafe_post.likes), class: "like-link", method: :delete, remote: true do %>
+    <i class="fa fa-heart unlike-btn"></i>
+  <% end %>
+  <%= cafe_post.likes.length %>
+<% else %>
+  <%= link_to cafe_post_likes_path(cafe_post), class: "like-link", method: :post, remote: true do %>
+    <i class="fa fa-heart like-btn"></i>
+  <% end %>
+  <%= cafe_post.likes.length %>
+<% end %>

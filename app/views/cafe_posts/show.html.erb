@@ -14,6 +14,11 @@
 
   <% end %>
 </div>
+
+<div id = "like_<%= @cafe_post.id %>">
+  <%= render partial: "likes/like", locals: { cafe_post: @cafe_post } %>
+</div>
+
 <% if @cafe_post.user == current_user %>
   <%= link_to "編集", edit_cafe_post_path(@cafe_post.id) %>
   <%= link_to "削除", cafe_post_path(@cafe_post.id), method: :delete, "data-confirm" => "削除しますか？" %>

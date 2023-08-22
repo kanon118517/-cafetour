@@ -12,7 +12,12 @@ class User < ApplicationRecord
       end
   end
 
-         has_many :cafe_posts, dependent: :destroy
+    has_many :cafe_posts, dependent: :destroy
+    has_many :likes, dependent: :destroy
+    has_many :liked_users, through: :likes, source: :user
 
+    def liked_by?(cafe_post_id)
+    likes.where(cafe_post_id: cafe_post_id).exists?
+    end
 
 end

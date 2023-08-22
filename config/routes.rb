@@ -25,7 +25,11 @@ Rails.application.routes.draw do
 
   resources :cafes, only: [:new, :create, :index, :show, :edit, :update]
 
-  resources :cafe_posts
+  resources :cafe_posts do
+     resources :likes, only: [:create, :destroy]
+    end
+
+
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

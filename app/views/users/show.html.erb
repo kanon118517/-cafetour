@@ -1,0 +1,23 @@
+<div>
+  <h3><%= @user.name %></h3>
+  <%= image_tag @user.get_profile_image(100,100) %>
+  <% if @user == current_user %>
+    <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
+  <% end %>
+</div>
+
+<% @cafe_posts.each do |cafe_post| %>
+<div>
+
+  <% if cafe_post.image.attached? %>
+    <%= image_tag cafe_post.image, size: "200x200" %>
+  <% else %>
+
+  <% end %>
+
+  <div>
+  <%= link_to cafe_post.cafe_comment, cafe_post_path(cafe_post.id) %>
+  </div>
+
+</div>
+<% end %>

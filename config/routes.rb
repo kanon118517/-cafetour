@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
    root to: "homes#top"
   get "/about" => "homes#about" , as: "about"
 
@@ -19,14 +18,16 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get 'homes/top' => "homes#top", as: "top"
-    resources :prefecttures, only: [:new, :create, :index]
     resources :cafes, only: [:index, :show, :destroy]
   end
+
+  resources :users, only: [:show, :edit, :update]
 
   resources :cafes, only: [:new, :create, :index, :show, :edit, :update]
 
   resources :cafe_posts do
      resources :likes, only: [:create, :destroy]
+     resources :comments, only: [:create]
     end
 
 

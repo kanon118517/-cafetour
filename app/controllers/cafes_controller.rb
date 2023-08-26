@@ -1,7 +1,7 @@
 class CafesController < ApplicationController
   def new
     @cafe = Cafe.new
-   
+
   end
 
   def create
@@ -11,7 +11,7 @@ class CafesController < ApplicationController
   end
 
   def index
-    @cafes = Cafe.all
+    @cafes = params[:tag_id].present? ? Tag.find(params[:tag_id]).cafes : Cafe.all
   end
 
   def show
@@ -31,7 +31,8 @@ class CafesController < ApplicationController
   private
 
   def cafe_params
-    params.require(:cafe).permit(:cafe_name,:address)
+    params.require(:cafe).permit(:cafe_name,:address, tag_ids: [])
   end
+
 
 end

@@ -2,6 +2,10 @@
 <h4>カフェ名</h4>
 <%= @cafe.cafe_name %>
 
+<% @cafe.tags.each do |tag| %>
+    <%= tag.name %>
+<% end %>
+
 <h4>住所</h4>
 <%= @cafe.address %>
 

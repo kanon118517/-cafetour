@@ -1,13 +1,29 @@
 <h3>カフェ一覧</h3>
 
+<%= link_to "Cafe＋", new_cafe_path %>
+
+<%= form_tag cafes_path, method: :get, class: 'boards__searchForm' do %>
+      <%= select_tag :tag_id,
+                     options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
+                     {
+                       prompt: 'タグで絞り込み検索',
+                       onchange: 'submit(this.form);'
+                     }
+      %>
+    <% end %>
+
+
+
 <% @cafes.each do |cafe| %>
 
 <div>
   <%= link_to cafe.cafe_name, cafe_path(cafe.id) %>
 </div>
 
-<div>
-  <%= cafe.address %>
-</div>
+<% cafe.tags.each do |tag| %>
+    <%= tag.name %>
+<% end %>
+
+
 
 <% end %>

@@ -1,5 +1,12 @@
 <h3>投稿一覧</h3>
 
+<%= search_form_for @q do |f| %>
+  <%= f.label :name, "Keyword" %>
+  <%= f.search_field :cafe_comment_cont %>
+
+  <%= f.submit "検索" %>
+<% end %>
+
 <% @cafe_posts.each do |cafe_post| %>
 
 <div>

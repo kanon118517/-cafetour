@@ -15,6 +15,17 @@ class User < ApplicationRecord
     has_many :cafe_posts, dependent: :destroy
     has_many :likes, dependent: :destroy
     has_many :liked_users, through: :likes, source: :user
+    has_many :comments
+
+    has_one_attached :profile_image
+
+  def get_profile_image(width,height)
+    unless profile_image.attached?
+      file_path = Rails.root.join('app/assets/images/default-image.jpg')
+      profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
+    end
+      profile_image.variant(resize_to_limit: [width, height]).processed
+  end
 
     def liked_by?(cafe_post_id)
     likes.where(cafe_post_id: cafe_post_id).exists?

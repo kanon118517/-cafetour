@@ -9,11 +9,12 @@
 
 <div>
   <% if @cafe_post.image.attached? %>
-    <%= image_tag @cafe_post.image, size: "200x200" %>
+      <%= image_tag @cafe_post.image, size: '200x200' %>
   <% else %>
-
+     
   <% end %>
 </div>
+
 
 <div id = "like_<%= @cafe_post.id %>">
   <%= render partial: "likes/like", locals: { cafe_post: @cafe_post } %>
@@ -23,4 +24,14 @@
   <%= link_to "編集", edit_cafe_post_path(@cafe_post.id) %>
   <%= link_to "削除", cafe_post_path(@cafe_post.id), method: :delete, "data-confirm" => "削除しますか？" %>
 
+<% end %>
+
+<%= form_with(model:[@cafe_post, @comment], method: :post) do |f| %>
+  <%= f.text_area :comment_content %>
+  <%= f.hidden_field :cafe_post_id, value: @cafe_post.id %>
+  <%= f.submit 'コメントする' %>
+<% end %>
+
+<% @comments.each do |comment| %>
+  <%= comment.comment_content %>
 <% end %>

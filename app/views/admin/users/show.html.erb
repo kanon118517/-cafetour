@@ -1,0 +1,19 @@
+<div>
+  <%= @user.name %>
+</div>
+
+<div>
+  <%= image_tag @user.get_profile_image(100,100) %>
+</div>
+
+<% @cafe_posts.each do |cafe_post| %>
+
+<% if cafe_post.image.attached? %>
+    <%= image_tag cafe_post.image, size: "200x200" %>
+  <% else %>
+
+  <% end %>
+
+  <%= cafe_post.cafe_comment %>
+
+  <% end %>

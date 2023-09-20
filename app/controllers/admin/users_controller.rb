@@ -4,7 +4,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def show
-    @user = current_user
+    @user = User.find(params[:id])
     @cafe_posts = @user.cafe_posts
   end
 

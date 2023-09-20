@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   sessions: 'public/sessions'
 }
 
+ get '/users/:id/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
+ patch '/users/:id/withdrawal' => 'users#withdrawal', as: 'withdrawal'
+
  devise_scope :user do
      post 'public/guest_sign_in', to: 'public/sessions#guest_sign_in'
    end

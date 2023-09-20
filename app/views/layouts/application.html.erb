@@ -11,34 +11,51 @@
   </head>
 
   <header>
-    <% if user_signed_in? %>
-      <li>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-      </li>
-      <li>
-        <%= link_to "Cafe", cafes_path %>
-      </li>
-      <li>
-        <%= link_to "User", user_path(current_user.id) %>
-      </li>
-    <% elsif admin_signed_in? %>
-      <li>
-        <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
-      </li>
-      <li>
-        サンプル
-      </li>
-      <li>
-        <%= link_to "User", admin_users_path %>
-      </li>
-    <% else %>
-      <li>
-        <%= link_to "新規登録", new_user_registration_path %>
-      </li>
-      <li>
-        <%= link_to "ログイン", new_user_session_path %>
-      </li>
-    <% end %>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+          <% if user_signed_in? %>
+            <li class="nav-item">
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-dark' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "About", about_path, class: 'nav-link text-dark' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Cafe", cafes_path, class: 'nav-link text-dark' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "User", user_path(current_user.id), class: 'nav-link text-dark' %>
+            </li>
+          <% elsif admin_signed_in? %>
+            <li class="nav-item">
+              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' %>
+            </li>
+            <li class="nav-item">
+              サンプル
+            </li>
+            <li class="nav-item">
+              <%= link_to "User", admin_users_path, class: 'nav-link text-dark' %>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to "About", about_path, class: 'nav-link text-dark' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-dark' %>
+            </li class="nav-item">
+            <li>
+              <%= link_to "ログイン", new_user_session_path, class: 'nav-link text-dark' %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+    </nav>
   </header>
 
   <body>

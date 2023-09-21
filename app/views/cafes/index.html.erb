@@ -16,20 +16,41 @@
       %>
     <% end %>
 
+<br>   
+<div class = "text-center">
+    
+    <div class = "row">
+        <div class = "col-5">
 
+        
 
-<% @cafes.each do |cafe| %>
+    <table class="table">
+        <thead>
+            <tr>
+              
+              <th scope="col">cafe name</th>
+              <th scope="col">エリアタグ</th>
+              
+            </tr>
+         </thead>
+    <tbody>
+        <% @cafes.each do |cafe| %>
+        <tr>
+                <td>
+                    <%= link_to cafe.cafe_name, cafe_path(cafe.id) %>
+                </td>
+                <td>
+                    <% cafe.tags.each do |tag| %>
+                        <%= tag.name %>
+                    <% end %>
+                </td>
+           </tr>
+       </tbody>
 
-<div>
-  <%= link_to cafe.cafe_name, cafe_path(cafe.id) %>
+        <% end %>
+    </table>
+    </div>
+    </div>
 </div>
-
-<% cafe.tags.each do |tag| %>
-    <%= tag.name %>
-<% end %>
-
-
-
-<% end %>
-
+</div>
 </div>

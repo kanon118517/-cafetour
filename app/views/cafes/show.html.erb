@@ -1,16 +1,45 @@
 
-<h4>カフェ名</h4>
-<%= @cafe.cafe_name %>
+<h3 class= "text-center">Cafe</h3>
 
-<% @cafe.tags.each do |tag| %>
-    <%= tag.name %>
-<% end %>
+<div class = "container">
+  
+  <div class = "row">
+    <div class = "col-3">
+      
+     <p>Cafe name</p>
+     </div>
+     <div class = "col-9">
+      <%= @cafe.cafe_name %>
+    </div>
+    <div class = "col-3">
+      <p>住所</p>
+    </div>
+    <div class = "col-9">
+      <%= @cafe.address %>
+    </div>
+    <div class = "col-3">
+      <p>エリア</p>
+    </div>
+    <div class = "col-9">
+      <% @cafe.tags.each do |tag| %>
+        <%= tag.name %>
+      <% end %>
+    </div>
 
-<h4>住所</h4>
-<%= @cafe.address %>
+   
+    <div class = "col-2">
+      <%= link_to "投稿する", new_cafe_post_path(cafe_id: @cafe.id), class: "btn btn-success" %>
+    </div>
 
-<%= link_to "投稿する", new_cafe_post_path(cafe_id: @cafe.id) %>
+    <div class = "col-2">
+      <%= link_to "編集", edit_cafe_path(@cafe.id), class: "btn btn-primary" %>
+    </div>
+    
+
+  
 
 
 
-<%= link_to "編集", edit_cafe_path(@cafe.id) %>
+    </div>
+  </div>
+</div>

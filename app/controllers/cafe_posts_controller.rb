@@ -27,6 +27,16 @@ class CafePostsController < ApplicationController
     @comment = current_user.comments.new
   end
 
+  def edit
+    @cafe_post = CafePost.find(params[:id])
+  end
+
+  def update
+    cafe_post = CafePost.find(params[:id])
+    cafe_post.update(cafe_post_params)
+    redirect_to cafe_posts_path
+  end
+
   def destroy
     cafe_post = CafePost.find(params[:id])
     cafe_post.destroy

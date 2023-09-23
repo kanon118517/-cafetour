@@ -1,18 +1,46 @@
-<h3>投稿画面</h3>
+<h3 class = "text-center">New Post</h3>
+
+<div class = "container">
 
 <%= form_with model: @cafe_post do |f| %>
 
-  <%= f.hidden_field :cafe_id, :value => @cafe.id %>
-   <%= @cafe.cafe_name %>
+<div class = "row">
+
+    <div class = "col-3">
+        <p>Cafe name</p>
+    </div>
+
+    <div class = "col-9">
+
+      <%= f.hidden_field :cafe_id, :value => @cafe.id %>
+       <%= @cafe.cafe_name %>
+
+   </div>
+
+    <div class = "col-3">
+        <p>Cafe Post</p>
+    </div>
+     <div class = "col-6">
+      <%= f.text_area :cafe_comment, class: 'form-control my-2' %>
+     </div>
+     <div class = "col-3"></div>
 
 
-  <h4>カフェコメント</h4>
-  <%= f.text_area :cafe_comment %>
 
-  <h4>画像</h4>
-  <%= f.file_field :image, accept: "image/*" %>
+     <div class = "col-3">
+         <p>Image</p>
+     </div>
+    <div class = "col-9">
+            <%= f.file_field :image, accept: "image/*" %>
 
-<%= f.submit '投稿' %>
+        </div>
+    </div>
+
+
+<%= f.submit '投稿',class: "btn btn-success" %>
 
 <% end %>
 
+</div>
+
+</div>

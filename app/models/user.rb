@@ -32,7 +32,7 @@ class User < ApplicationRecord
   end
 
     def liked_by?(cafe_post_id)
-    likes.where(cafe_post_id: cafe_post_id).exists?
+     likes.where(cafe_post_id: cafe_post_id).exists?
     end
 
 end

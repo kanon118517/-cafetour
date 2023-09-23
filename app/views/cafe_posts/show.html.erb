@@ -1,13 +1,28 @@
+<h3 class = "text-center">Cafe Post</h3>
+<div class = "container">
+  <div class = "text-right">
+    <% if @cafe_post.user == current_user %>
+      <%= link_to "編集", edit_cafe_post_path(@cafe_post.id), class: "btn btn-primary mx-1" %>
+      <%= link_to "削除", cafe_post_path(@cafe_post.id), method: :delete, "data-confirm" => "削除しますか？", class: "btn btn-danger mx-1" %>
+  
+    <% end %>
+   </div>
+  <div class = "row">
 
-<div>
+<div class = "col-3">
+  <p>Cafe name</p>
+</div>
+<div class = "col-9">
   <%= @cafe_post.cafe.cafe_name %>
 </div>
 
-<div>
+<div class = "col-3"></div>
+<div class = "col-9">
   <%= @cafe_post.cafe_comment %>
 </div>
 
-<div>
+<div class = "col-3"></div>
+<div class = "col-9">
   <% if @cafe_post.image.attached? %>
       <%= image_tag @cafe_post.image, size: '200x200' %>
   <% else %>
@@ -15,23 +30,40 @@
   <% end %>
 </div>
 
-
-<div id = "like_<%= @cafe_post.id %>">
-  <%= render partial: "likes/like", locals: { cafe_post: @cafe_post } %>
+<div class = "col-3"></div>
+  <div class = "col-9">
+  <div id = "like_<%= @cafe_post.id %>">
+    <%= render partial: "likes/like", locals: { cafe_post: @cafe_post } %>
+  </div>
 </div>
 
-<% if @cafe_post.user == current_user %>
-  <%= link_to "編集", edit_cafe_post_path(@cafe_post.id) %>
-  <%= link_to "削除", cafe_post_path(@cafe_post.id), method: :delete, "data-confirm" => "削除しますか？" %>
 
-<% end %>
+<div class = "col-3"></div>
+<div class = "col-6">
+  <%= form_with(model:[@cafe_post, @comment], method: :post) do |f| %>
+    <%= f.text_area :comment_content, class: "form-control my-2" %>
+    <%= f.hidden_field :cafe_post_id, value: @cafe_post.id %>
+    <%= f.submit 'コメントする', class: "btn btn-success my-2" %>
+  <% end %>
+</div>
+<div class = "col-3"></div>
 
-<%= form_with(model:[@cafe_post, @comment], method: :post) do |f| %>
-  <%= f.text_area :comment_content %>
-  <%= f.hidden_field :cafe_post_id, value: @cafe_post.id %>
-  <%= f.submit 'コメントする' %>
-<% end %>
+<div class = "col-3"></div>
+<div class = "col-6">
+  
+<table class="table">  
 
-<% @comments.each do |comment| %>
-  <%= comment.comment_content %>
-<% end %>
+<tbody>
+  <% @comments.each do |comment| %>
+  <tr>
+    <td>
+        <%= comment.comment_content %>
+    </td>
+  </tr>
+  <% end %>
+</tbody>
+</table>
+</div>
+
+  </div>
+</div>

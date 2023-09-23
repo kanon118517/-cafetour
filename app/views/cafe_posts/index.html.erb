@@ -1,24 +1,58 @@
-<h3>投稿一覧</h3>
+<h3 class = "text-center">Post All</h3>
 
-<%= search_form_for @q do |f| %>
-  <%= f.label :name, "Keyword" %>
-  <%= f.search_field :cafe_comment_cont %>
+<div class = "container">
 
-  <%= f.submit "検索" %>
-<% end %>
 
-<% @cafe_posts.each do |cafe_post| %>
+    <div class="d-flex flex-row-reverse bd-highlight">
 
-<div>
-  <%= link_to cafe_post.cafe_comment, cafe_post_path(cafe_post.id) %>
+
+      <%= search_form_for @q do |f| %>
+
+        <%= f.search_field :cafe_comment_cont, class: "form-control", placeholder: "Keyword" %>
+     <div class = "text-right">
+        <%= f.submit "検索",class: "btn btn-secondary my-2" %>
+     </div>
+
+      <% end %>
+
+    </div>
+
+<div class = "row">
+  <div class = "col-2"></div>
+  <div class = "col-8">
+
+  <table class="table">
+        <thead>
+            <tr>
+              <th scope="col">Cafe</th>
+              <th scope="col">Post</th>
+              <th scope="col"></th>
+            </tr>
+         </thead>
+         <tbody>
+            <% @cafe_posts.each do |cafe_post| %>
+            <tr>
+              <td>
+                <%= cafe_post.cafe.cafe_name %>
+              </td>
+              <td>
+                <%= link_to cafe_post.cafe_comment, cafe_post_path(cafe_post.id) %>
+              </td>
+              <td>
+                 <% if cafe_post.image.attached? %>
+                  <%= image_tag cafe_post.image, size: "200x200" %>
+                <% else %>
+
+                <% end %>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+
+      </div>
+
+
+
 </div>
 
-<div>
-  <% if cafe_post.image.attached? %>
-    <%= image_tag cafe_post.image, size: "200x200" %>
-  <% else %>
-
-  <% end %>
 </div>
-
-<% end %>

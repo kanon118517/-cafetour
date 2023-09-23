@@ -11,5 +11,9 @@ class CafePost < ApplicationRecord
   def self.ransackable_attributes(auth_object = nil)
     ["cafe_comment", "cafe_id", "created_at", "id", "updated_at", "user_id"]
   end
+  
+  def self.ransackable_associations(auth_object = nil)
+    ["cafe", "comments", "image_attachment", "image_blob", "liked_cafe_posts", "likes", "user"]
+  end
 
 end

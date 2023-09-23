@@ -4,10 +4,17 @@
     <% if @cafe_post.user == current_user %>
       <%= link_to "編集", edit_cafe_post_path(@cafe_post.id), class: "btn btn-primary mx-1" %>
       <%= link_to "削除", cafe_post_path(@cafe_post.id), method: :delete, "data-confirm" => "削除しますか？", class: "btn btn-danger mx-1" %>
-  
+
     <% end %>
    </div>
   <div class = "row">
+
+    <div class = "col-3">
+      <p>User</p>
+    </div>
+    <div class = "col-9">
+      <%= @cafe_post.user.name %>
+    </div>
 
 <div class = "col-3">
   <p>Cafe name</p>
@@ -26,7 +33,7 @@
   <% if @cafe_post.image.attached? %>
       <%= image_tag @cafe_post.image, size: '200x200' %>
   <% else %>
-     
+
   <% end %>
 </div>
 
@@ -50,8 +57,8 @@
 
 <div class = "col-3"></div>
 <div class = "col-6">
-  
-<table class="table">  
+
+<table class="table">
 
 <tbody>
   <% @comments.each do |comment| %>

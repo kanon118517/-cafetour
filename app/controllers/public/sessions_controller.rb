@@ -8,6 +8,10 @@ class Public::SessionsController < Devise::SessionsController
      redirect_to root_path, notice: 'ゲストユーザーとしてログインしました。'
   end
 
+  # def after_sign_in_path_for(resource)
+  #   redirect_to cafe_posts_path
+  # end
+
 
   # GET /resource/sign_in
   # def new

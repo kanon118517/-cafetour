@@ -1,19 +1,59 @@
-<div>
+<p class = "text-center my-2">
   <%= @user.name %>
-</div>
+</p>
 
-<div>
-  <%= image_tag @user.get_profile_image(100,100) %>
-</div>
-
-<% @cafe_posts.each do |cafe_post| %>
-
-<% if cafe_post.image.attached? %>
-    <%= image_tag cafe_post.image, size: "200x200" %>
-  <% else %>
-
-  <% end %>
-
-  <%= cafe_post.cafe_comment %>
-
-  <% end %>
+<div class = "container">
+  
+  <div class = "row">
+        <div class = "col-3"></div>
+        <div class = "col-2">
+           <%= image_tag @user.get_profile_image(100,100) %>
+        </div>
+        
+        <div class = "col-7">
+           <%= @user.introduction %>
+        </div>
+        
+        <div class = "col-3"></div>
+        
+        <div class = "col-6 my-2">
+        
+        <table class="table">
+        <thead>
+            <tr>
+              
+              <th scope="col">post</th>
+              <th scope="col">image</th>
+              
+            </tr>
+         </thead>
+    <tbody>
+        
+        <tr>
+        
+        <% @cafe_posts.each do |cafe_post| %>
+        
+          <td>
+            <%= cafe_post.cafe_comment %>
+          </td>
+          
+          <td>
+            <% if cafe_post.image.attached? %>
+            <%= image_tag cafe_post.image, size: "200x200" %>
+          <% else %>
+        
+          <% end %>
+          </td>
+        
+          
+          </tr>
+      </tbody>
+      
+      <% end %>
+    </table>
+          
+    </div>
+    
+    </div>
+          
+  </div>

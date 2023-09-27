@@ -1,15 +1,29 @@
 <div class = "container">
 
-<h4>カフェ名</h4>
+<div class = "row">
+  
+  <div class = "col-3"></div>
+  <div class = "col-2 my-2">
+    <p>Cafe name</p>
+  </div>
+  <div class = "col-6 my-2">
+    <%= @cafe.cafe_name %>
+  </div>
 
-<%= @cafe.cafe_name %>
+  <div class = "col-3"></div>
+  <div class = "col-2 my-2">
+    <p>Address</p>
+  </div>
+  <div class = "col-6 my-2">
+    <%= @cafe.address %>
+  </div>
 
-<h4>住所</h4>
+</div>
 
-<%= @cafe.address %>
+<div class = "text-center">
+  <%= link_to "削除", admin_cafe_path(@cafe.id), method: :delete, "data-confirm" => "削除しますか？", class: "btn btn-danger my-5" %>
+</div>
 
-
-<%= link_to "削除", admin_cafe_path(@cafe.id), method: :delete, "data-confirm" => "削除しますか？" %>
 
 
 </div>

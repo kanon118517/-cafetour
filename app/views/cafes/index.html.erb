@@ -36,6 +36,7 @@
     <tbody>
         
         <tr>
+            <% @cafes.each do |cafe| %>
                 <td>
                     <%= link_to cafe.cafe_name, cafe_path(cafe.id) %>
                 </td>
@@ -46,6 +47,7 @@
                 </td>
            </tr>
        </tbody>
+       <% end %>
 
     </table>
     </div>

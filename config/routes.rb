@@ -24,6 +24,9 @@ Rails.application.routes.draw do
     get 'homes/top' => "homes#top", as: "top"
     resources :cafes, only: [:index, :show, :destroy]
     resources :users, only: [:index, :show, :edit, :update]
+    resources :cafe_posts, only: [:show] do
+        resources :comments, only: [:destroy]
+    end
   end
 
   resources :users, only: [:show, :edit, :update]

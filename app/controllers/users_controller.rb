@@ -1,6 +1,11 @@
 class UsersController < ApplicationController
+  
+  before_action :set_user, only: [:likes]
+  
+
+  
   def show
-    @user = current_user
+    @user = User.find(params[:id])
     @cafe_posts = @user.cafe_posts
   end
 
@@ -21,6 +26,11 @@ class UsersController < ApplicationController
     @user.update(user_params)
     redirect_to user_path(@user.id)
   end
+  
+  def likes
+    likes = Like.where(user_id: @user.id).pluck(:cafe_post_id)
+    @like_posts = CafePost.find(likes)
+  end
 
   private
 
@@ -39,5 +49,10 @@ class UsersController < ApplicationController
       end
     end
   end
+  
+  def set_user
+    @user = User.find(params[:id])
+  end
+  
 
 end

@@ -2,9 +2,9 @@
 <div class = "container">
     
 <div class = "text-right">
-    
-<%= link_to "Cafe＋", new_cafe_path, class: "btn btn-success" %>
-
+<% if current_user.email != 'guest@example.com' %>    
+    <%= link_to "Cafe＋", new_cafe_path, class: "btn btn-success" %>
+<% end %>
 </div>
 <%= form_tag cafes_path, method: :get, class: 'boards__searchForm' do %>
       <%= select_tag :tag_id,

@@ -21,7 +21,7 @@ Rails.application.routes.draw do
    end
 
   namespace :admin do
-    get 'homes/top' => "homes#top", as: "top"
+    
     resources :cafes, only: [:index, :show, :destroy]
     resources :users, only: [:index, :show, :edit, :update]
     resources :cafe_posts, only: [:show] do
@@ -29,7 +29,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users, only: [:show, :edit, :update]
+  resources :users, only: [:show, :edit, :update] do
+      member do
+        get :likes 
+    end
+end
 
   resources :cafes, only: [:new, :create, :index, :show, :edit, :update]
 

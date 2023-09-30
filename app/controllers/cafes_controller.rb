@@ -6,8 +6,11 @@ class CafesController < ApplicationController
 
   def create
     cafe = Cafe.new(cafe_params)
-    cafe.save
-    redirect_to cafes_path
+    if (current_user.email != 'guest@example.com') && cafe.save
+      redirect_to cafes_path
+    else
+      redirect_to cafes_path
+    end
   end
 
   def index
@@ -24,8 +27,11 @@ class CafesController < ApplicationController
 
   def update
     cafe = Cafe.find(params[:id])
-    cafe.update(cafe_params)
-    redirect_to cafes_path
+    if (current_user.email != 'guest@example.com') && cafe.update(cafe_params)
+      redirect_to cafes_path
+    else
+      redirect_to cafes_path
+    end
   end
 
   private

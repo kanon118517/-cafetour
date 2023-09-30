@@ -1,9 +1,46 @@
 <div class = "container">
   <div class = "row">
-    
-    
-    
+    <div class = "col-3 my-4">
+  <p>Cafe name</p>
+</div>
+<div class = "col-9 my-4">
+  <%= @cafe_post.cafe.cafe_name %>
+</div>
+
+<div class = "col-3"></div>
+<div class = "col-9">
+  <%= @cafe_post.cafe_comment %>
+</div>
+
+<div class = "col-3"></div>
+<div class = "col-9">
+  <% if @cafe_post.image.attached? %>
+      <%= image_tag @cafe_post.image, size: '200x200' %>
+  <% else %>
+
+  <% end %>
+</div>
+<div class = "col-3"></div>
+<div class = "col-6">
+
+<table class="table">
+
+<tbody>
+  <% @comments.each do |comment| %>
+  <tr>
+    <td>
+        <%= comment.comment_content %>
+    </td>
+    <td>
+      <%= link_to "削除",admin_cafe_post_comment_path(comment.cafe_post.id, comment.id), method: :delete, class: "btn btn-danger" %>
+    </td>
+  </tr>
+  <% end %>
+</tbody>
+</table>
+
+
   </div>
-  
-  
+
+
 </div>

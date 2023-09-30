@@ -13,7 +13,7 @@
       <p>User</p>
     </div>
     <div class = "col-9">
-      <%= @cafe_post.user.name %>
+      <%= link_to @cafe_post.user.name, user_path(@cafe_post.user.id) %>
     </div>
 
 <div class = "col-3">

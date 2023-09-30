@@ -9,7 +9,7 @@ class CafePostsController < ApplicationController
   def create
     cafe_post = CafePost.new(cafe_post_params)
     cafe_post.user_id = current_user.id
-    if cafe_post.save
+    if (current_user.email != 'guest@example.com') && cafe_post.save
       redirect_to cafe_posts_path
     else
       redirect_to cafe_posts_path

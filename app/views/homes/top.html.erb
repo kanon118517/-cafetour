@@ -1,6 +1,12 @@
-<h2>TOP</h2>
+<h3 class = "text-center">Cafe Walk</h3>
+
+<p class = "text-center">※投稿するためには新規登録が必要です。</p>
+    <div class = "text-center">
+      <%= link_to "新規登録", new_user_registration_path, class: "btn btn-success mx-2" %>
+      <%= link_to 'ゲストログイン（閲覧用）', public_guest_sign_in_path, method: :post, class: "btn btn-primary mx-2" %>
+    </div>
+    
 
 
 
 
-<%= link_to 'ゲストログイン（閲覧用）', public_guest_sign_in_path, method: :post %>

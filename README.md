@@ -1,24 +1,46 @@
-# README
+# Cafe Walk　
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+### サイトテーマ
+カフェ巡りが趣味の人たちのためのコミュニティサイト
 
-Things you may want to cover:
+ユーザーが行ったことがあるカフェの記録やユーザー自身が行ったことはない他のユーザーおすすめカフェを見つけるためのサイト
 
-* Ruby version
+地域別で検索して出先や旅行先などで活用できる
 
-* System dependencies
+### テーマを選んだ理由
+カフェで友人とよくお茶することがあり
 
-* Configuration
+また、行ってみたいカフェや食べたいデザートを目的としてネットで探すのが多いので
 
-* Database creation
+コミュニティサイトがあれば便利かと思いました。
 
-* Database initialization
+### ターゲットユーザ
+老若男女あらゆる世代から活用できる。
 
-* How to run the test suite
+### 主な利用シーン
+地域別で検索したり、
+友人や家族で行ってみたいカフェを探したり、
+行ってみたカフェを記録したりする
 
-* Services (job queues, cache servers, search engines, etc.)
+## 設計書
+<...>
 
-* Deployment instructions
+## 開発環境
+- OS：MacBook Air(macOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
 
-* ...
+## 使用素材
+- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
+- 使用しない場合は、使用素材の項目をREADMEから削除してください。
+
+
+ 
+
+
+##  実装機能リスト
+
+https://docs.google.com/spreadsheets/d/1X8sn35JE4A_p420zValChv0b-Lkqu-81rR8v9qGcjsQ/edit?usp=sharing

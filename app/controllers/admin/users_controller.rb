@@ -8,7 +8,5 @@ class Admin::UsersController < ApplicationController
     @cafe_posts = @user.cafe_posts
   end
 
-  def edit
-    @user = User.find(params[:id])
-  end
+ 
 end
